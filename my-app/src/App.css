@@ -7,6 +7,15 @@
   border-radius: 16px;
 }
 
+.main {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.title {
+  text-align: center;
+}
+
 .tblAtt {
   text-align: left;
   margin-left: 5%;
