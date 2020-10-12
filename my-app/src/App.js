@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import tableDaftarBuah from './Tugas-9/tugas9';
 import TableHargaDaftarBuah from './Tugas-10/tugas10';
+import Clocker from './Tugas-11/tugas11';
 
 function App() {
   return (  
@@ -10,6 +11,8 @@ function App() {
       <tableDaftarBuah/>
       <br/>
       <TableHargaDaftarBuah />
+      <br/>
+      <Clocker/>
     </div>
    );
 }
