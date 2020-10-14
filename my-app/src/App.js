@@ -5,6 +5,7 @@ import tableDaftarBuah from './Tugas-9/tugas9';
 import TableHargaDaftarBuah from './Tugas-10/tugas10';
 import Clocker from './Tugas-11/tugas11';
 import FormBuah from './Tugas-12/tugas12';
+import DataHargaBuahAxios from './Tugas-13/tugas13';
 
 function App() {
   return (  
@@ -14,8 +15,9 @@ function App() {
       <TableHargaDaftarBuah />
       <br/>
       <Clocker/>
-      <br/>*/}
-      <FormBuah/>
+      <br/>
+      <FormBuah/>*/}
+      <DataHargaBuahAxios/>
     </div>
    );
 }
