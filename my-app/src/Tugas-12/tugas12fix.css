@@ -2,10 +2,18 @@ h1{
     text-align: center;
   }
   
-  th, td {
+  td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    background-color: orangered;
+  }
+
+  th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background-color: grey;
   }
   
   table {

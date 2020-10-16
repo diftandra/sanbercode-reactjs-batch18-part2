@@ -1,67 +1,90 @@
-import React from 'react'
+import React, {Component} from "react"
 
-class Clocker extends React.Component {
-    constructor(props) {
+var date = new Date();
+
+export default class Timer extends Component{
+    constructor(props){
         super(props)
-        let waktu = new Date()
-        waktu = waktu.toLocaleString('ID', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true}).replace(/\./g,":")
         this.state = {
-            waktuSekarang: waktu,
-            hitungMundur: 100,
-            showTime: true
+            timer: 101,
+            h: date.getHours(),
+            m: date.getMinutes(),
+            s: date.getSeconds(),
+            showTime: true,
+            night: false,
+            timeProp: "AM",
         }
     }
 
-    componentDidMount() {
-        this.waktuSekarang = setInterval(() => this.tick(), 1000)
-        this.waktuHitungMundur = setInterval(() => this.hitungMundur(), 1000)
-    }
-
-    componentDidUpdate() {
-        if(this.state.hitungMundur === 0 && this.state.showTime) {
-            this.stopTime()
-            this.hideTime()
-        }
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.waktuHitungMundur)
-    }
-
-    tick() {
-        let waktu = new Date()
-        waktu = waktu.toLocaleString('ID', { hour: 'numeric', minute: 'numeric', second:'numeric', hour12: true }).replace(/\./g,":")
-        this.setState({ waktuSekarang: waktu })
-    }
-
-    hitungMundur() {
+    tick(){
         this.setState({
-            hitungMundur: this.state.hitungMundur - 1
-        })
+            timer: this.state.timer - 1,
+            s: this.state.s + 1
+        });
+        if(this.state.h > 12){
+            this.setState({h: this.state.h-12})
+            this.setState({night: true})
+        }
+        if(this.state.s == 60){
+            this.setState({m: this.state.m + 1})
+            this.setState({s: 0})
+        }
+        if(this.state.m == 60){
+            this.setState({h: this.state.h + 1})
+            this.setState({m: 0})
+        }
+        if(this.state.h == 12 && this.state.night == false){
+            this.setState({h: 0})
+            this.setState({night: true})
+        }
+        if(this.state.h == 12 && this.state.night == true){
+            this.setState({h: 0})
+            this.setState({night: false})
+        }
+        if (this.state.night == true){
+            this.setState({timeProp: "PM"})
+        }
+        if (this.state.night == false){
+            this.setState({timeProp: "AM"})
+        }
     }
 
-    stopTime() {
-        this.componentWillUnmount()
+    componentDidMount(){
+        this.timerID = setInterval(
+          () => this.tick(),
+          1000
+        );
     }
 
-    hideTime() {
-        this.setState({ showTime: false })
+    componentWillUnmount(){
+        clearInterval(this.timerID);
     }
 
-    render() {
-        return (
+    componentDidUpdate(){
+        if (this.state.showTime === true){
+            if (this.state.timer <= 0){
+                this.setState({
+                showTime : false
+                })
+                this.componentWillUnmount()
+            }
+        }
+    }
+
+    render(){
+        return(
             <>
-                {
-                    this.state.showTime && (
-                        <h2 style={{display: "flex", justifyContent: "space-around"}}>
-                            <b><p>sekarang jam : {this.state.waktuSekarang}</p></b>
-                            <b><p>hitung mundur : {this.state.hitungMundur}</p></b>
-                        </h2>
-                    )
-                }
+            {this.state.showTime && (
+                <>
+                <h1 style={{textAlign: "right",marginRight: "10%"}}>
+                    hitung mundur: {this.state.timer}
+                </h1>
+                <h1 style={{textAlign: "left",marginLeft: "10%",marginTop:"-65px"}}>
+                    sekarang jam: {this.state.h}:{this.state.m}:{this.state.s} {this.state.timeProp}
+                </h1>
+                </>
+            )}
             </>
         )
     }
 }
-
-export default Clocker

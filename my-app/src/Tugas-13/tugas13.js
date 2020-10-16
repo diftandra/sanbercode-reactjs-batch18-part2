@@ -1,5 +1,6 @@
 import React, { Component , useState, useEffect} from 'react'
 import axios from 'axios'
+import "../Tugas-12/tugas12fix.css"
 
 const DataHargaBuahAxios = () => {
      useEffect( () => {
@@ -48,6 +49,7 @@ const DataHargaBuahAxios = () => {
 
         axios.put(`http://backendexample.sanbercloud.com/api/fruits/${data[index].id}`, selectedRow)
         .then(res => {
+          // lakukan handle ketika sukses
           refreshData()
         })
     }
@@ -56,6 +58,7 @@ const DataHargaBuahAxios = () => {
         http://backendexample.sanbercloud.com/api/fruits/{ID_FRUIT}
         axios.post(`http://backendexample.sanbercloud.com/api/fruits`, selectedRow)
         .then(res => {
+          // lakukan handle ketika sukses
           refreshData()
         })
     }
@@ -63,6 +66,7 @@ const DataHargaBuahAxios = () => {
     const handleDeleteClick = (index) => {        
         axios.delete(`http://backendexample.sanbercloud.com/api/fruits/${data[index].id}`)
         .then(res => {
+          // lakukan handle ketika sukses
           refreshData()
         })
     }

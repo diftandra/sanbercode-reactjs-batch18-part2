@@ -3,7 +3,7 @@ import {DaftarBuahProvider} from "./Context"
 import DaftahBuahList from "./List"
 import DaftarBuahForm from "./Form"
 
-const DaftarBuah = () =>{
+const Tugas14 = () =>{
     return(
       <DaftarBuahProvider>
           <DaftahBuahList/>
@@ -14,4 +14,4 @@ const DaftarBuah = () =>{
     )
   }
   
-  export default DaftarBuah
+  export default Tugas14

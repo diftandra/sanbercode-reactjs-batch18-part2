@@ -1,41 +1,29 @@
 import React from 'react';
+import "../App.css";
 
-class tableDaftarBuah extends React.Component {
-  render() {
-    return (<div className="App">
-    <h1 className="title">Form Pembelian Buah</h1>
-    <table className="tblAtt" cellspacing="5px">
-      <tr>
-        <td><b>Nama Pelanggan</b></td>
-        <td><input></input></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><input type="checkbox"/>Semangka </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><input type="checkbox"/>Jeruk</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><input type="checkbox"/>Nanas</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><input type="checkbox"/>Salak</td>
-      </tr>
-      <tr>
-        <td><b>Daftar Item</b></td>
-        <td><input type="checkbox"/>Anggur</td>
-      </tr>
-      <tr>
-        <input className="btn" type="submit" value="Kirim"/>
-      </tr>
-    </table>
-  </div>);    
-  }
+export default class Form extends React.Component {
+    render(){
+        return(<div class ="container">
+        <h1>Form Pembelian Buah</h1>
+        <div class = "box">
+        <div class = "content">
+          <div class = "contenthead">Nama Pelanggan</div>
+          <div class = "contentbody"><input type="text" name="Nama" size = "25" ></input></div>
+        </div>
+        <div class = "content">
+          <div class = "contenthead">Daftar Item</div>
+          <div class = "contentbody"> 
+                <p><input type='checkbox' name='item' value='semangka' />Semangka</p>
+                <p><input type='checkbox' name='item' value='jeruk' />Jeruk</p>
+                <p><input type='checkbox' name='item' value='nanas' />Nanas</p>
+                <p><input type='checkbox' name='item' value='salak' />Salak</p>
+                <p><input type='checkbox' name='item' value='anggur' />Anggur</p>
+          </div>
+        </div>
+          <button style={{background: "white", borderRadius : 20}}>
+            <a href="#" style={{textDecoration : "none", color: "black"}}>Kirim</a>
+          </button>
+          </div>
+      </div>)
+    }
 }
-
-export default tableDaftarBuah;
- 
